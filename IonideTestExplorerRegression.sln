@@ -16,7 +16,7 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MsTestTests", "tests\MsTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpTests", "tests\CSharpTests\CSharpTests.csproj", "{F1CBEB7F-44C9-4D47-A9B7-2AF08FA16438}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ExpectoTests", "tests\ExpectoTests.fsproj", "{39ECFB78-5231-49B3-8FCC-EACF29DA60FC}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ExpectoTests", "tests\ExpectoTests\ExpectoTests.fsproj", "{39ECFB78-5231-49B3-8FCC-EACF29DA60FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

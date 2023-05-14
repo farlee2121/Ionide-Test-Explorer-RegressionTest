@@ -7,5 +7,10 @@ namespace CSharpTests
         {
 
         }
+        [Fact]
+        public void Test2()
+        {
+
+        }
     }
 }
