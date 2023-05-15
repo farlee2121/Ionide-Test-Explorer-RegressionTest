@@ -7,9 +7,27 @@ open Xunit
 let ``My test`` () =
     Assert.True(true)
 
+[<Fact>]
 let ``Such test`` () =
     Assert.True(true)
 
+[<Fact>]
 let ``I Fail`` () =
     Assert.True(false)
-    
+
+module XunitNested =
+
+    [<Fact>]
+    let ``Very Nested`` () =
+        Assert.True(false)
+
+    module AnotherLayer =
+        [<Fact>]
+        let ``Wow`` () =
+            Assert.True(true)
+
+
+type ``Class Based`` () =
+    [<Fact>]
+    let ``I'm part of a class`` () =
+        Assert.True(true)

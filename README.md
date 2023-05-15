@@ -32,3 +32,9 @@
   - also make sure removed tests disappear
 - Can add a test project and the tests show up
 - Wrapped test methods i.e. `testProperty'` where I set standard config for testPropertyWithConfig and assign it to a shorter name
+- Run a subset of tests, exit and reopen vscode. All expected tests should still be present. (Test that we don't load from incomplete test result files)
+- Nested test classes display with expected nesting (i.e. we support both `.` and `+` separators)
+- Simulate bottlenecks
+  - large projects
+  - slow tests
+  - complex build dependencies
