@@ -24,8 +24,7 @@ module Nested =
         ()
 
 
-[<TestFixture>]
 type ClassBased () =
     [<Test>]
-    let IAmATest () = 
+    member _.``Test inside a class instance`` () = 
         ()

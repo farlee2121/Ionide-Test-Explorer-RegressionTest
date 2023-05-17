@@ -15,7 +15,7 @@ let ``Such test`` () =
 let ``I Fail`` () =
     Assert.True(false)
 
-module XunitNested =
+module Nested =
 
     [<Fact>]
     let ``Very Nested`` () =
@@ -25,7 +25,6 @@ module XunitNested =
         [<Fact>]
         let ``Wow`` () =
             Assert.True(true)
-
 
 type ``Class Based`` () =
     [<Fact>]
