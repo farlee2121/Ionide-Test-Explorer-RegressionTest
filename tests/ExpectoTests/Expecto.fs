@@ -70,7 +70,7 @@ let InMemoryCrudAPIFactory () =
 
 [<Tests>]
 let tests =
-  testList "samples" [
+  testList "ExpectoTests" [
 
     testList "Wrapped test methods" [
       testCase' "Methods that call other test methods still show in test explorer" <| fun _ ->
@@ -120,6 +120,7 @@ let tests =
     testCase "Sometimes I want to ༼ノಠل͟ಠ༽ノ ︵ ┻━┻" <| fun _ ->
       Expect.equal "abcdëf" "abcdef" "These should equal"
 
+    
     test "I am (should fail)" {
       "╰〳 ಠ 益 ಠೃ 〵╯" |> Expect.equal true false
     }
