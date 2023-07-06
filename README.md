@@ -16,6 +16,10 @@ Build and project behaviors
 - Tests should be discovered from any project that has them
 - Tests should be discovered even if the project has never been built or tests ran
 
+Failure case user guidance
+- If no test projects are found, but no tests, warn the user they should make sure tests can run with `dotnet test`
+- Warn the user if no tests are executed (i.e. the test no longer exists. Especially pertinent for tests without a code location) 
+
 Tests Statuses
 - All test result statuses should display
   - success
@@ -26,6 +30,11 @@ Tests Statuses
 - Projects that fail to build show error (not failure)
 - I should be able to run any selection of tests and groups and only those tests display status updates
 
+Test filters
+- I can select a parent and child item and all tests in the parent are successfully run
+- I can run project groupings
+- I can run project groupings alongside other test selections
+
 
 Update behaviors
 - If we have code location
@@ -35,7 +44,6 @@ Update behaviors
   - Code-updated tests can be run as expected
 - Code locations should be preserved when refreshing the test list
 - Running a group will update child tests to reflect the current state in code (i.e. children added, removed, or renamed)
-- Warn the user if no tests are executed (i.e. the test no longer exists. Especially pertinent for tests without a code location) 
 - Refreshing the test list discovers added test projects
 - Run a subset of tests, exit and reopen vscode. All expected tests should still be discovered. (Ensure that we don't load from incomplete test result files)
 
