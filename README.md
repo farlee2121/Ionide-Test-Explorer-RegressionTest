@@ -34,7 +34,8 @@ Test filters
 - I can select a parent and child item and all tests in the parent are successfully run
 - I can run project groupings
 - I can run project groupings alongside other test selections
-
+- NUnit run specifically selected test items with spaces in the name (spaces in the test filter expression)
+  - Works even when the test was discovered after code location caching and without triggering a code update
 
 Update behaviors
 - If we have code location

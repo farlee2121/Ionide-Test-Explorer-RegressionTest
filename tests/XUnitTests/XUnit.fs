@@ -12,6 +12,10 @@ let ``Such test`` () =
     Assert.True(true)
 
 [<Fact>]
+let ``Contains.separator+characters`` () =
+    Assert.True(true)
+
+[<Fact>]
 let ``I Fail`` () =
     Assert.True(false)
 

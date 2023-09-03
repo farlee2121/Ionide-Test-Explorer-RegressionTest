@@ -94,6 +94,9 @@ let tests =
 
     reusableTestSuite "InMemoryCrudAPI" InMemoryCrudAPIFactory
 
+    testCase "Contains+separator.characters" <| fun _ ->
+      let subject = true
+      Expect.isTrue subject "I compute, therefore I am."
 
     testCase "universe exists (╭ರᴥ•́)" <| fun _ ->
       let subject = true
@@ -131,3 +134,32 @@ let tests =
       ]
     ]
   ]
+
+let compose1 = testList "Not directly in parent"  [
+  testCase "I pass " (fun _ -> ())
+  test "Me too" { ()}
+]
+
+let compose2 = testList "Also not directly in parent"  [
+  testCase "Nya aa" (fun _ -> ())
+  test "Woof" { ()}
+  testList "Deeper nesting boi" [
+    testCase "Baaa" (fun _ -> ())
+
+    testList "So deep" [
+      testCase "Baaaaaaa" (fun _ -> ())
+    ]
+  ]
+]
+
+[<Tests>]
+let t = testList "Composed test lists?" [
+  compose1
+  compose2
+]
+
+[<Tests>]
+let t2 = testList "Composed test lists - 2" [
+  compose1
+  compose2
+]
