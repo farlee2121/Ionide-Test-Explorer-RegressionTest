@@ -28,3 +28,9 @@ type ClassBased () =
     [<Test>]
     member _.``Test inside a class instance`` () = 
         ()
+
+
+[<TestCase(2,2,4)>]
+[<TestCase(2,3,4)>]
+let theoryTest x y sum =
+    Assert.AreEqual(sum, x + y)

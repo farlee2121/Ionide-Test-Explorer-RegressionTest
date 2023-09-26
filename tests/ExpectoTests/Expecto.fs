@@ -92,6 +92,12 @@ let tests =
 
     ]
 
+    testTheory "New official theory test" [
+      (2,2),4
+      (2,3),5
+    ] <| fun ((x,y),sum) ->
+      Expect.equal (x+y) sum ""
+
     reusableTestSuite "InMemoryCrudAPI" InMemoryCrudAPIFactory
 
     testCase "Contains+separator.characters" <| fun _ ->

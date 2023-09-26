@@ -10,7 +10,12 @@ type TestClass () =
     member this.TestMethodPassing () =
         Assert.IsTrue(true);
 
-    
+    [<DataTestMethod>]
+    [<DataRow(2,2,4)>]
+    [<DataRow(2,3,5)>]
+    member this.theoryTest (x:int, y:int, sum:int) =
+        Assert.AreEqual(sum, x + y)
+        
 module NestSomeTests = 
     [<TestClass>]
     type NestedInAModule () =
@@ -18,3 +23,4 @@ module NestSomeTests =
         [<TestMethod>]
         member this.``This Is Nested`` () =
             Assert.IsTrue(true);
+
