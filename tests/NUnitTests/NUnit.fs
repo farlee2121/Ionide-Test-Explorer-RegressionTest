@@ -10,17 +10,18 @@ let Setup () =
 let Test1IsRenamed () =
     Assert.Pass()
 
-[<Test>]
-let IAmATest () =
-    Assert.Pass()
 
 [<Test>]
 let Added () = 
     ()
 
+[<Test>]
+let SameNameDifferentScope () =
+    Assert.Pass()
+
 module Nested =
     [<Test>]
-    let IAmATest () = 
+    let SameNameDifferentScope () = 
         ()
 
 

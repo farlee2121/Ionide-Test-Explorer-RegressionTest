@@ -21,7 +21,20 @@ let ``My test`` () =
 let ``I Fail`` () =
     Assert.True(false)
 
+[<Fact>]
+let ``Same name different scope`` () =
+    Assert.True(true)
+
+[<Fact(DisplayName="I have a display name")>]
+let HasDisplayName () =
+    Assert.True(true)
+
+
 module Nested =
+
+    [<Fact>]
+    let ``Same name different scope`` () =
+        Assert.True(true)
 
     [<Fact>]
     let ``Very Nested`` () =

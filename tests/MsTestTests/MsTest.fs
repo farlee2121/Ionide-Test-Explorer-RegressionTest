@@ -10,6 +10,10 @@ type TestClass () =
     member this.TestMethodPassing () =
         Assert.IsTrue(true);
 
+    [<TestMethod>]
+    member this.SameNameDifferentScope () =
+        Assert.IsTrue(true);
+
     [<DataTestMethod>]
     [<DataRow(2,2,4)>]
     [<DataRow(2,3,5)>]
@@ -24,3 +28,6 @@ module NestSomeTests =
         member this.``This Is Nested`` () =
             Assert.IsTrue(true);
 
+        [<TestMethod>]
+        member this.SameNameDifferentScope () =
+            Assert.IsTrue(true);

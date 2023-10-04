@@ -36,6 +36,7 @@ Test filters
 - I can run project groupings alongside other test selections
 - NUnit run specifically selected test items with spaces in the name (spaces in the test filter expression)
   - Works even when the test was discovered after code location caching and without triggering a code update
+- Test names should be allowed to contain filter expresion characters (`()~!=\`)
 
 Update behaviors
 - If we have code location
@@ -57,6 +58,15 @@ Location-based features
   - display gutter test actions (run, test status, etc)
   - go to test / reveal in test explorer
 
+Parameterized tests for all frameworks
+- run and show status
+- can run them individually
+  - won't actually be individual for MsTest or NUnit, but will look like it if you don't debug
+- 
+
+~~Display names / names specified in attributes~~ -> NOTE: Choosing not to support for now. Introduces too many more framework quirks
+- should show the expected name in the test explorer
+- should be fully functional (filter, run, debug, etc)
 
 Test Results View
 - If I open the test console output. I see all errors failure and warnings, including tests without code locations
