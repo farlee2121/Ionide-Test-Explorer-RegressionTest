@@ -20,6 +20,20 @@ type TestClass () =
     member this.theoryTest (x:int, y:int, sum:int) =
         Assert.AreEqual(sum, x + y)
         
+
+    static member AdditionData : Collections.Generic.IEnumerable<obj[]> =
+        [
+            [|(1, 1); 2 |]
+            [|(2, 2); 4 |]
+            [|(3, 3); 6 |]
+        ]
+
+
+    [<TestMethod>]
+    [<DynamicData(nameof(TestClass.AdditionData))>]
+    member this.dataSourceTest ((x:int,y:int), sum:int) =
+        Assert.AreEqual(sum, x + y)
+        
 module NestSomeTests = 
     [<TestClass>]
     type NestedInAModule () =
