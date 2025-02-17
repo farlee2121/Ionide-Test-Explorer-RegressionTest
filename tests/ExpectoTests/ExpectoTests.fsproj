@@ -6,11 +6,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Expecto.fs" />
+    <Compile Include="LoggingTests.fs" />
     <!-- <Compile Include="twothousand.fs" /> -->
     <Compile Include="Main.fs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Expecto" Version="10.1.0" />
+    <PackageReference Include="Expecto" Version="10.2.1" />
     <PackageReference Include="YoloDev.Expecto.TestSdk" Version="0.14.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />
     <PackageReference Include="Expecto.FsCheck" Version="9.0.4" />
