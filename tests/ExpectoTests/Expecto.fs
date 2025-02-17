@@ -66,7 +66,10 @@ let InMemoryCrudAPIFactory () =
     ListAll = (fun () -> store.Values |> List.ofSeq)
   }
 
-
+type RootClass() = class end
+type ClassA(i: int) = 
+  let i = i
+type ClassB() = inherit RootClass()
 
 [<Tests>]
 let tests =
@@ -98,13 +101,31 @@ let tests =
     ] <| fun ((x,y),sum) ->
       Expect.equal (x+y) sum ""
 
+
     reusableTestSuite "InMemoryCrudAPI" InMemoryCrudAPIFactory
 
     testCase "Contains+separator.characters" <| fun _ ->
       let subject = true
       Expect.isTrue subject "I compute, therefore I am."
 
-    testCase "universe exists (╭ರᴥ•́)" <| fun _ ->
+    testCase "Access to env" <| fun _ ->
+      let writeEnvVars (d:System.Collections.IDictionary) =
+        let formatted =
+          d.Keys 
+          |> Seq.cast<string>
+          |> Seq.map (fun key -> $"{key}: {d[key]}")
+        System.IO.File.AppendAllLines("C:/users/farle/downloads/env.txt", formatted)
+      let s = System.Environment.GetEnvironmentVariables()
+      writeEnvVars s
+      let envValue = System.Environment.GetEnvironmentVariable "this"
+      // let envValue = System.Environment.GetEnvironmentVariable "Ionide_TestValue"
+      Expect.equal envValue "cat" ""
+
+    testCase "universe exists (╭ರᴥ•́) boi" <| fun _ ->
+      let subject = true
+      Expect.isTrue subject "I compute, therefore I am."
+
+    testCase "contains \"quotes\"" <| fun _ ->
       let subject = true
       Expect.isTrue subject "I compute, therefore I am."
 

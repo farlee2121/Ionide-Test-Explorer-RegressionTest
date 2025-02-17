@@ -16,6 +16,9 @@ let ``Contains.separator+characters`` () =
 let ``My test`` () =
     Assert.True(true)
 
+[<Fact>]
+let ``Such name`` () =
+    ()
 
 [<Fact>]
 let ``I Fail`` () =
@@ -42,7 +45,7 @@ module Nested =
 
     module AnotherLayer =
         [<Fact>]
-        let ``Wow`` () =
+        let ``Bow Wow`` () =
             Assert.True(true)
 
 type ``Class Based`` () =
@@ -55,3 +58,17 @@ type ``Class Based`` () =
 [<InlineData(2,3,4)>]
 let theoryTest (x:int) (y:int) (sum:int) =
     Assert.Equal(sum, x+y)
+
+// [<Fact>]
+// let Slow1 () =
+//     System.Threading.Thread.Sleep(1000)
+
+// [<Fact>]
+// let Slow2 () =
+//     System.Threading.Thread.Sleep(5000)
+
+[<Fact>]
+let AccessEnv () =
+    let envValue = System.Environment.GetEnvironmentVariable "this"
+    // let envValue = System.Environment.GetEnvironmentVariable "Ionide_TestValue"
+    Assert.Equal("cat", envValue)
