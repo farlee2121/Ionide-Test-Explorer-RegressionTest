@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{7E7C0D3C
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MSTestPlatform.Expecto.Tests", "tests\MSTestPlatform.Expecto.Tests\MSTestPlatform.Expecto.Tests.fsproj", "{DC0C5A9E-4D61-469F-BAD3-79FEA9779145}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MSTestPlatform.XUnit.Tests", "tests\MSTestPlatform.XUnit.Tests\MSTestPlatform.XUnit.Tests.fsproj", "{FDAD747E-AFA7-4F7A-ACFC-AB242ADCB30C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{DC0C5A9E-4D61-469F-BAD3-79FEA9779145}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC0C5A9E-4D61-469F-BAD3-79FEA9779145}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC0C5A9E-4D61-469F-BAD3-79FEA9779145}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDAD747E-AFA7-4F7A-ACFC-AB242ADCB30C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDAD747E-AFA7-4F7A-ACFC-AB242ADCB30C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDAD747E-AFA7-4F7A-ACFC-AB242ADCB30C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDAD747E-AFA7-4F7A-ACFC-AB242ADCB30C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,5 +67,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DC0C5A9E-4D61-469F-BAD3-79FEA9779145} = {7E7C0D3C-0D8C-47A2-BDFC-34B991667D50}
+		{FDAD747E-AFA7-4F7A-ACFC-AB242ADCB30C} = {7E7C0D3C-0D8C-47A2-BDFC-34B991667D50}
 	EndGlobalSection
 EndGlobal
