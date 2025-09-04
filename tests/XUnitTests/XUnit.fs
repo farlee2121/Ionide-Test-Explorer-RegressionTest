@@ -8,6 +8,12 @@ open Xunit
 let ``Such test`` () =
     Assert.True(true)
 
+
+[<Fact>]
+let ``Very Slow`` () =
+    Threading.Thread.Sleep(5000)
+    Assert.True(true)
+
 [<Fact>]
 let ``Contains.separator+characters`` () =
     Assert.True(true)
@@ -31,7 +37,6 @@ let ``Same name different scope`` () =
 [<Fact(DisplayName="I have a display name")>]
 let HasDisplayName () =
     Assert.True(true)
-
 
 module Nested =
 
@@ -66,6 +71,10 @@ let theoryTest (x:int) (y:int) (sum:int) =
 // [<Fact>]
 // let Slow2 () =
 //     System.Threading.Thread.Sleep(5000)
+
+[<Fact(Skip = "I'm skipped")>]
+let Skipped () =
+    Assert.Equal(true, true)
 
 [<Fact>]
 let AccessEnv () =

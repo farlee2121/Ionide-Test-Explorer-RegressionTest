@@ -8,8 +8,7 @@ let Setup () =
 
 [<Test>]
 let Test1IsRenamed () =
-    Assert.Pass()
-
+    Assert.Pass("Success output")
 
 [<Test>]
 let Added () = 
@@ -24,12 +23,10 @@ module Nested =
     let SameNameDifferentScope () = 
         ()
 
-
 type ClassBased () =
     [<Test>]
     member _.``Test inside a class instance`` () = 
         ()
-
 
 [<TestCase(2,2,4)>]
 [<TestCase(2,3,4)>]

@@ -94,7 +94,7 @@ let tests =
         true
 
     ]
-
+    
     testTheory "New official theory test" [
       (2,2),4
       (2,3),5
@@ -108,18 +108,18 @@ let tests =
       let subject = true
       Expect.isTrue subject "I compute, therefore I am."
 
-    testCase "Access to env" <| fun _ ->
-      let writeEnvVars (d:System.Collections.IDictionary) =
-        let formatted =
-          d.Keys 
-          |> Seq.cast<string>
-          |> Seq.map (fun key -> $"{key}: {d[key]}")
-        System.IO.File.AppendAllLines("C:/users/farle/downloads/env.txt", formatted)
-      let s = System.Environment.GetEnvironmentVariables()
-      writeEnvVars s
-      let envValue = System.Environment.GetEnvironmentVariable "this"
-      // let envValue = System.Environment.GetEnvironmentVariable "Ionide_TestValue"
-      Expect.equal envValue "cat" ""
+    // testCase "Access to env" <| fun _ ->
+    //   let writeEnvVars (d:System.Collections.IDictionary) =
+    //     let formatted =
+    //       d.Keys 
+    //       |> Seq.cast<string>
+    //       |> Seq.map (fun key -> $"{key}: {d[key]}")
+    //     System.IO.File.AppendAllLines("C:/users/farle/downloads/env.txt", formatted)
+    //   let s = System.Environment.GetEnvironmentVariables()
+    //   writeEnvVars s
+    //   let envValue = System.Environment.GetEnvironmentVariable "this"
+    //   // let envValue = System.Environment.GetEnvironmentVariable "Ionide_TestValue"
+    //   Expect.equal envValue "cat" ""
 
     testCase "universe exists (╭ರᴥ•́) boi" <| fun _ ->
       let subject = true
@@ -163,7 +163,7 @@ let tests =
   ]
 
 let compose1 = testList "Not directly in parent"  [
-  testCase "I pass " (fun _ -> ())
+  testCase "I pass and can rename" (fun _ -> ())
   test "Me too" { ()}
 ]
 
@@ -174,13 +174,13 @@ let compose2 = testList "Also not directly in parent"  [
     testCase "Baaa" (fun _ -> ())
 
     testList "So deep" [
-      testCase "Baaaaaaa" (fun _ -> ())
+      testCase "Baaaaaaaaa" (fun _ -> ())
     ]
   ]
 ]
 
 [<Tests>]
-let t = testList "Composed test lists?" [
+let t = testList "Composed test list?" [
   compose1
   compose2
 ]
