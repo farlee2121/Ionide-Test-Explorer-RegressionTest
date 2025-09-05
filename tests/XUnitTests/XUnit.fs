@@ -81,3 +81,22 @@ let AccessEnv () =
     let envValue = System.Environment.GetEnvironmentVariable "this"
     // let envValue = System.Environment.GetEnvironmentVariable "Ionide_TestValue"
     Assert.Equal("cat", envValue)
+
+
+
+module NamesWithFilterChars =
+
+    [<Fact>]
+    let ``!`` () = ()
+   
+    [<Fact>]
+    let ``this \ that`` () = ()
+   
+    [<Fact>]
+    let ``~`` () = ()
+   
+    [<Fact>]
+    let ``()`` () = ()
+    
+    [<Fact>]
+    let ``=`` () = ()
