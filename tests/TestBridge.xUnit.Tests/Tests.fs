@@ -9,5 +9,6 @@ let ``My test`` () =
 
 
 [<Fact>]
-let ``Constains+Separator.Characters`` () =
+let ``Contains+Separator.Characters`` () =
+    Assert.True(true)
     Assert.True(true)
