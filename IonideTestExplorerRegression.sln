@@ -28,6 +28,10 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "TestBridge.NUnit.Tests", "t
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "TestBridge.xUnit.Tests", "tests\TestBridge.xUnit.Tests\TestBridge.xUnit.Tests.fsproj", "{3241A558-94C1-4682-9460-07775D2D2CE5}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ReusedTestConsumer", "tests\ReusedTestConsumer\ReusedTestConsumer.fsproj", "{47432648-8A0E-4221-A316-18841FD2EABE}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ReusedTestSource", "tests\ReusedTestSource\ReusedTestSource.fsproj", "{732C1DC8-884D-40CD-88EC-098932D90B38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +74,14 @@ Global
 		{3241A558-94C1-4682-9460-07775D2D2CE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3241A558-94C1-4682-9460-07775D2D2CE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3241A558-94C1-4682-9460-07775D2D2CE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47432648-8A0E-4221-A316-18841FD2EABE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47432648-8A0E-4221-A316-18841FD2EABE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47432648-8A0E-4221-A316-18841FD2EABE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47432648-8A0E-4221-A316-18841FD2EABE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{732C1DC8-884D-40CD-88EC-098932D90B38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{732C1DC8-884D-40CD-88EC-098932D90B38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{732C1DC8-884D-40CD-88EC-098932D90B38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{732C1DC8-884D-40CD-88EC-098932D90B38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,5 +94,7 @@ Global
 		{CF1D7A3C-E497-43D4-9DA5-A01B9621D133} = {7B3D1ED0-3BCE-486C-8BE6-B1630FAF2380}
 		{8E24A9EF-BB41-4B77-80E8-3397F1D395C3} = {7B3D1ED0-3BCE-486C-8BE6-B1630FAF2380}
 		{3241A558-94C1-4682-9460-07775D2D2CE5} = {7B3D1ED0-3BCE-486C-8BE6-B1630FAF2380}
+		{47432648-8A0E-4221-A316-18841FD2EABE} = {7B3D1ED0-3BCE-486C-8BE6-B1630FAF2380}
+		{732C1DC8-884D-40CD-88EC-098932D90B38} = {7B3D1ED0-3BCE-486C-8BE6-B1630FAF2380}
 	EndGlobalSection
 EndGlobal
