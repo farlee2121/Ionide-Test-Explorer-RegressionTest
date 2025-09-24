@@ -2,6 +2,8 @@
 
 # Test Cases
 
+Run all test for both VSTest-based and dotnet test-based backends
+
 Test Tree Structure
 - Expecto test lists create a hierarchy of test groups
 - Nested classes show as a hierarch of test groups
@@ -14,7 +16,9 @@ Test Tree Structure
 Build and project behaviors
 - Tests can be discovered with or without a solution file
 - Tests should be discovered from any project that has them
-- Tests should be discovered even if the project has never been built or tests ran
+- Test discovery throws a warning if the test projects have not been restored
+- Test discovery throws a warning if the test projects have not been built
+
 
 Failure case user guidance
 - If no test projects are found, but no tests, warn the user they should make sure tests can run with `dotnet test`
@@ -37,6 +41,7 @@ Test filters
 - NUnit run specifically selected test items with spaces in the name (spaces in the test filter expression)
   - Works even when the test was discovered after code location caching and without triggering a code update
 - Test names should be allowed to contain filter expresion characters (`()~!=\`)
+- I can filter to a test with -- in the test name
 
 Update behaviors
 - If we have code location
@@ -74,7 +79,11 @@ Test Results View
 - In the Test Results tree, errored tests (i.e. project doesn't compile) should show their error message
 - In the Test Results trees, failed tests should show their failure messages
   - Failed tests without code locations should still display here
+- Handles tests of the same name in different projects
 
+Debug
+- only attaches debugger to test projects with a selected test
+- attaches to all test projects (c#, F#, MTP, all frameworks, etc)
 
 Simulate bottlenecks
 - large projects
@@ -82,3 +91,7 @@ Simulate bottlenecks
   - Smaller test selections shouldn't be impacted
   - (Unfortunately, there doesn't seem to be a way around this impacting test discovery)
 - complex build dependencies
+
+Test on sample repositories
+- https://github.com/TheAngryByrd/IcedTasks
+- ?? https://github.com/dotnet/fsharp 
