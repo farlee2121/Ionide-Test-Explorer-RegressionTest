@@ -7,7 +7,7 @@ let Setup () =
     ()
 
 [<Test>]
-let Test1IsRenamed () =
+let IHaveSuccessOutput () =
     Assert.Pass("Success output")
 
 [<Test>]
