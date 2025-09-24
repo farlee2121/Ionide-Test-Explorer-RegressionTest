@@ -58,6 +58,7 @@ type ``Class Based`` () =
     let ``I'm part of a class`` () =
         Assert.True(true)
 
+
 [<Theory>]
 [<InlineData(2,2,4)>]
 [<InlineData(2,3,4)>]
@@ -99,4 +100,6 @@ module NamesWithFilterChars =
     let ``()`` () = ()
     
     [<Fact>]
-    let ``=`` () = ()
+    let ``= (equals)`` () = ()
+
+
