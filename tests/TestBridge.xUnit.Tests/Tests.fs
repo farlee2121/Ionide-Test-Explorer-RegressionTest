@@ -11,4 +11,12 @@ let ``My test`` () =
 [<Fact>]
 let ``Contains+Separator.Characters`` () =
     Assert.True(true)
+
+
+[<Fact>]
+let ``My test 11`` () =
+    Assert.True(true)
+
+[<Fact>]
+let ``My test 22`` () =
     Assert.True(true)
