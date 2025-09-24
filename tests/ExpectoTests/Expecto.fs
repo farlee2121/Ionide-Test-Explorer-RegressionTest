@@ -74,6 +74,9 @@ type ClassB() = inherit RootClass()
 [<Tests>]
 let tests =
   testList "ExpectoTests" [
+    
+    testCase "Contains -- in the name, which we use an id separator" <| fun () ->
+        ()
 
     testList "Wrapped test methods" [
       testCase' "Methods that call other test methods still show in test explorer" <| fun _ ->
