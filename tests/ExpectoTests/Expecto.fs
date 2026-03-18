@@ -78,6 +78,76 @@ let tests =
     testCase "Contains -- in the name, which we use an id separator" <| fun () ->
         ()
 
+    testList "Represent all test functions, minus focus" [
+        testCase "testCase" <| fun () -> ()
+        testCaseAsync "testCaseAsync" <| async {
+        
+        }
+        testCaseTask "testCaseTask" <| fun () -> task { }
+        ptestCase "ptestCase" <| fun () -> ()
+        ptestCaseAsync "ptestCaseAsync" <| async { }
+        ptestCaseTask "ptestCaseTask" <| fun () -> task { }
+
+        test "test builder" {}
+        testAsync "test builder - async " {
+        
+        }
+        testTask "test builder - task" {
+        
+        }
+        ptest "ptest builder" {}
+        ptestAsync "ptest builder - async " {
+        
+        }
+        ptestTask "ptest builder - task" {
+        
+        }
+
+        testTheory "testTheory" [1;2;3] <| fun _ -> ()
+        testTheoryAsync "testTheoryAsync" [1;2;3] <| fun _ -> async {}
+        testTheoryTask "testTheoryTask" [1;2;3] <| fun _ -> task {}
+        ptestTheory "testTheory" [1;2;3] <| fun _ -> ()
+        ptestTheoryAsync "testTheoryAsync" [1;2;3] <| fun _ -> async {}
+        ptestTheoryTask "testTheoryTask" [1;2;3] <| fun _ -> task {}
+
+        testList "testFixture" [
+            let withFive testf () = testf 5
+            yield! testFixture withFive [
+                "fixture test 1", fun _ -> ()
+                "fixture test 2", fun _ -> ()
+            ]
+        ]
+
+        testList "testFixtureAsync" [
+            let withFiveAsync testf = async { do! testf 5 }
+            yield! testFixtureAsync withFiveAsync [
+                "fixture test 1", fun _ -> async {}
+                "fixture test 2", fun _ -> async {}
+            ]
+        ]
+
+        testList "testFixtureTask" [
+            let withFiveTask testf = task { do! testf 5 }
+            yield! testFixtureTask withFiveTask [
+                "fixture test 1", fun _ -> task {}
+                "fixture test 2", fun _ -> task {}
+            ]
+        ]
+        testList "testParam" (testParam 5 [
+            "with param 1", fun _ () -> ()
+            "with param 2", fun _ () -> ()
+        ] |> List.ofSeq)
+
+        testProperty "testProperty" <| fun (i: int) -> ()
+        testPropertyWithConfig FsCheckConfig.defaultConfig "testPropertyWithConfig" <| fun (i: int) -> ()
+        testPropertyWithConfigStdGen (0,0) FsCheckConfig.defaultConfig "testPropertyWithConfigStdGen" <| fun (i: int) -> ()
+        etestProperty (0,0) "etestProperty" <| fun (i: int) -> ()
+        etestPropertyWithConfig (0,0) FsCheckConfig.defaultConfig "etestPropertyWithConfig" <| fun (i: int) -> ()
+        ptestProperty "ptestProperty" <| fun (i: int) -> ()
+        ptestPropertyWithConfig FsCheckConfig.defaultConfig "ptestPropertyWithConfig" <| fun (i: int) -> ()
+    ]
+
+
     testList "Wrapped test methods" [
       testCase' "Methods that call other test methods still show in test explorer" <| fun _ ->
         ()
