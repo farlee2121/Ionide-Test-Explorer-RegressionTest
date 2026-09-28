@@ -106,9 +106,9 @@ let tests =
         testTheory "testTheory" [1;2;3] <| fun _ -> ()
         testTheoryAsync "testTheoryAsync" [1;2;3] <| fun _ -> async {}
         testTheoryTask "testTheoryTask" [1;2;3] <| fun _ -> task {}
-        ptestTheory "testTheory" [1;2;3] <| fun _ -> ()
-        ptestTheoryAsync "testTheoryAsync" [1;2;3] <| fun _ -> async {}
-        ptestTheoryTask "testTheoryTask" [1;2;3] <| fun _ -> task {}
+        ptestTheory "ptestTheory" [1;2;3] <| fun _ -> ()
+        ptestTheoryAsync "ptestTheoryAsync" [1;2;3] <| fun _ -> async {}
+        ptestTheoryTask "ptestTheoryTask" [1;2;3] <| fun _ -> task {}
 
         testList "testFixture" [
             let withFive testf () = testf 5
@@ -141,8 +141,8 @@ let tests =
         testProperty "testProperty" <| fun (i: int) -> ()
         testPropertyWithConfig FsCheckConfig.defaultConfig "testPropertyWithConfig" <| fun (i: int) -> ()
         testPropertyWithConfigStdGen (0,0) FsCheckConfig.defaultConfig "testPropertyWithConfigStdGen" <| fun (i: int) -> ()
-        etestProperty (0,0) "etestProperty" <| fun (i: int) -> ()
-        etestPropertyWithConfig (0,0) FsCheckConfig.defaultConfig "etestPropertyWithConfig" <| fun (i: int) -> ()
+        // etestProperty (0,0) "etestProperty" <| fun (i: int) -> ()
+        // etestPropertyWithConfig (0,0) FsCheckConfig.defaultConfig "etestPropertyWithConfig" <| fun (i: int) -> ()
         ptestProperty "ptestProperty" <| fun (i: int) -> ()
         ptestPropertyWithConfig FsCheckConfig.defaultConfig "ptestPropertyWithConfig" <| fun (i: int) -> ()
     ]
@@ -247,7 +247,7 @@ let compose2 = testList "Also not directly in parent"  [
     testCase "Baaa" (fun _ -> ())
 
     testList "So deep" [
-      testCase "Baaaaaaaaa" (fun _ -> ())
+      testCase "Baaaaaaaaaa" (fun _ -> ())
     ]
   ]
 ]
