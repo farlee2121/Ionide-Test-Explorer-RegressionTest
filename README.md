@@ -9,7 +9,7 @@ Test Tree Structure
 - Nested classes show as a hierarch of test groups
   - i.e. we support both `.` and `+` separators in test fully qualified names
 - Both static and instance-based classes work for frameworks that support both (NUnit, XUnit)
-- Tests from C# projects are shown with the same expected behaviors, but no locations
+- Tests from C# projects are shown with the same expected behaviors (now including code locations)
 - Tests written with libraries we don't support code analysis for are displayed (i.e. MSTest)
 - Tests created indirectly display correctly (i.e. wrapping an expecto function)
 
