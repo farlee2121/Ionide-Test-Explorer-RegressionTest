@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/Docs/">
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/ReusedTestConsumer/ReusedTestConsumer.fsproj" />
+    <Project Path="tests/ReusedTestSource/ReusedTestSource.fsproj" />
+    <Project Path="tests/TestBridge.Expecto.Tests/TestBridge.Expecto.Tests.fsproj" />
+    <Project Path="tests/TestBridge.MSTest.Tests/TestBridge.MSTest.Tests.fsproj" />
+    <Project Path="tests/TestBridge.NUnit.Tests/TestBridge.NUnit.Tests.fsproj" />
+    <Project Path="tests/TestBridge.xUnit.Tests/TestBridge.xUnit.Tests.fsproj" />
+    <Project Path="tests/CSharpTests/CSharpTests.csproj" />
+    <Project Path="tests/ExpectoTests/ExpectoTests.fsproj" />
+    <Project Path="tests/MsTestTests/MsTestTests.fsproj" />
+    <Project Path="tests/NUnitTests/NUnitTests.fsproj" />
+    <Project Path="tests/XUnitTests/XUnitTests.fsproj" />
+  </Folder>
+</Solution>
