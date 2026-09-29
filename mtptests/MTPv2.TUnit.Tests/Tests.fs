@@ -13,6 +13,10 @@ open TUnit.Assertions.FSharp.Operations
 type Tests() =
 
     [<Test>]
+    member  _.``Contains seperators + and . but one name`` () =
+        ()
+
+    [<Test>]
     member _.Basic() =
         Console.WriteLine("This is a basic test")
 

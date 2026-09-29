@@ -45,3 +45,7 @@ module NestSomeTests =
         [<TestMethod>]
         member this.SameNameDifferentScope () =
             Assert.IsTrue(true);
+
+        [<TestMethod>]
+        member _.``Contains seperators + and . but one name`` () =
+            Assert.IsTrue(true)

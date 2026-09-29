@@ -45,6 +45,10 @@ module Nested =
         Assert.True(true)
 
     [<Fact>]
+    let ``Contains seperators + and . but one name`` () =
+        Assert.True(true)
+
+    [<Fact>]
     let ``Very Nested`` () =
         Assert.True(false)
 

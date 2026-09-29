@@ -2,6 +2,12 @@
   <Folder Name="/Docs/">
     <File Path="README.md" />
   </Folder>
+  <Folder Name="/mtptests/">
+    <Project Path="mtptests/MTPv2.MsTest.Tests/MTPv2.MsTest.Tests.fsproj" />
+    <Project Path="mtptests/MTPv2.NUnit.Tests/MTPv2.NUnit.Tests.fsproj" />
+    <Project Path="mtptests/MTPv2.TUnit.Tests/MTPv2.TUnit.Tests.fsproj" />
+    <Project Path="mtptests/MTPv2.xUnit.Tests/MTPv2.xUnit.Tests.fsproj" />
+  </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/ReusedTestConsumer/ReusedTestConsumer.fsproj" />
     <Project Path="tests/ReusedTestSource/ReusedTestSource.fsproj" />
@@ -12,10 +18,6 @@
     <Project Path="tests/CSharpTests/CSharpTests.csproj" />
     <Project Path="tests/ExpectoTests/ExpectoTests.fsproj" />
     <Project Path="tests/MsTestTests/MsTestTests.fsproj" />
-    <Project Path="mtptests/MTPv2.MsTest.Tests/MTPv2.MsTest.Tests.fsproj" />
-    <Project Path="mtptests/MTPv2.NUnit.Tests/MTPv2.NUnit.Tests.fsproj" />
-    <Project Path="mtptests/MTPv2.TUnit.Tests/MTPv2.TUnit.Tests.fsproj" />
-    <Project Path="mtptests/MTPv2.xUnit.Tests/MTPv2.xUnit.Tests.fsproj" />
     <Project Path="tests/NUnitTests/NUnitTests.fsproj" />
     <Project Path="tests/XUnitTests/XUnitTests.fsproj" />
   </Folder>

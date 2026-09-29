@@ -32,3 +32,7 @@ type ClassBased () =
 [<TestCase(2,3,4)>]
 let theoryTest (x:int) (y: int) (sum: int) =
     Assert.That(sum, Is.EqualTo((x + y)))
+
+[<Test>]
+let ``Contains seperators + and . but one name`` () =
+    Assert.That( true)
