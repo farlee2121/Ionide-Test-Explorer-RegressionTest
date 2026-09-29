@@ -1,4 +1,18 @@
 
+# NOTE: Awkward Mixed MTP / VSTest Behavior
+
+This repository contains test projects across the test platform migration spectrum: just VSTest, VSTestBridge (MTP running on VSTest's server), and just Microsoft.Testing.Platform (MTP).
+
+However, dotnet test will not abide mixed test runners. If you have MTP and VSTest together, then all the MTP projects have to use VSTestBridge and use the VSTest runner.
+But Ionide needs to support all of these runner options, so we want to demonstrate them here 
+
+The workaround in this repository using 3 solution files and 2 seperate directories.
+- `dotnet test ./tests` will work for all of the VSTest compatible projects 
+- To `dotnet test` the mtp projects, you must change directory to ./mtptests then run `dotnet test`.
+  - If you don't change your working directory, then the dotnet SDK won't pick up on the global.json which is required to set the test runner to MTP
+
+Ionide should work against the root IonideTestExplorerRegression.slnx which includes all the test projects for both runner types.
+
 
 # Test Cases
 

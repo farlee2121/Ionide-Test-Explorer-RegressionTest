@@ -1,0 +1,13 @@
+<Solution>
+    <Project Path="ReusedTestConsumer/ReusedTestConsumer.fsproj" />
+    <Project Path="ReusedTestSource/ReusedTestSource.fsproj" />
+    <Project Path="TestBridge.Expecto.Tests/TestBridge.Expecto.Tests.fsproj" />
+    <Project Path="TestBridge.MSTest.Tests/TestBridge.MSTest.Tests.fsproj" />
+    <Project Path="TestBridge.NUnit.Tests/TestBridge.NUnit.Tests.fsproj" />
+    <Project Path="TestBridge.xUnit.Tests/TestBridge.xUnit.Tests.fsproj" />
+    <Project Path="CSharpTests/CSharpTests.csproj" />
+    <Project Path="ExpectoTests/ExpectoTests.fsproj" />
+    <Project Path="MsTestTests/MsTestTests.fsproj" />
+    <Project Path="NUnitTests/NUnitTests.fsproj" />
+    <Project Path="XUnitTests/XUnitTests.fsproj" />
+</Solution>

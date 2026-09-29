@@ -1,4 +1,4 @@
 {
-    "dotnet.defaultSolution": "IonideTestExplorerRegression.slnx",
+    "dotnet.defaultSolution": "tests/pre-mtp.slnx",
     "FSharp.TestExplorer.AutoDiscoverTestsOnLoad": true
 }
