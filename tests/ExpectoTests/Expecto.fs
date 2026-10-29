@@ -74,6 +74,13 @@ type ClassB() = inherit RootClass()
 [<Tests>]
 let tests =
   testList "ExpectoTests" [
+
+    testCase "Try creating std out" <| fun () ->
+        use stdout = System.Console.OpenStandardOutput()
+        use swriter = new System.IO.StreamWriter(stdout)
+        swriter.WriteLine("hi")
+        stdout.Flush()
+        printfn "hi"
     
     testCase "Contains -- in the name, which we use an id separator" <| fun () ->
         ()

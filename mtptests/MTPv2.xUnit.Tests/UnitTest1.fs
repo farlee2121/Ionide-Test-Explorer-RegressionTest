@@ -27,6 +27,10 @@ let ``Such name`` () =
     ()
 
 [<Fact>]
+let ``Std out or Console log handling`` () =
+    System.Console.WriteLine("how does xunit handle std out / console logs?")
+
+[<Fact>]
 let ``I Fail`` () =
     Assert.True(false)
 
@@ -80,6 +84,10 @@ let theoryTest (x:int) (y:int) (sum:int) =
 [<Fact(Skip = "I'm skipped")>]
 let Skipped () =
     Assert.Equal(true, true)
+
+[<Fact>]
+let SkippedAssertion () =
+    Assert.Skip("very skipped")
 
 [<Fact>]
 let AccessEnv () =

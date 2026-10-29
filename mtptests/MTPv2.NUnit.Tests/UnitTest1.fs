@@ -11,6 +11,10 @@ let IHaveSuccessOutput () =
     Assert.Pass("Success output")
 
 [<Test>]
+let StdOut () = 
+    System.Console.WriteLine("how does nunit handle std out / console logs?")
+
+[<Test>]
 let Added () = 
     ()
 

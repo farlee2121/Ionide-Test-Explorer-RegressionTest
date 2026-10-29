@@ -7,6 +7,10 @@ open Microsoft.VisualStudio.TestTools.UnitTesting
 type TestClass () =
 
     [<TestMethod>]
+    member this.WritesToConsole () = 
+        Console.WriteLine("I'm very good output. How is Std out treated?")
+
+    [<TestMethod>]
     member this.TestMethodPassing () =
         Assert.IsTrue(true);
 
