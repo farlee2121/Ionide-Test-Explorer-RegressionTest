@@ -1,11 +1,211 @@
 module Tests
 
 open Expecto
+open System
+
+let testCase' = testCase;
+let test' = test;
+
+let testProperty' name f = testPropertyWithConfig { FsCheckConfig.defaultConfig with arbitrary = []} name f
+
+let theory (name:string) (cases: #seq<'T>) (fTest: 'T -> 'U) =
+  let dataToTest caseData =
+    testCase (string caseData) <| fun () ->
+      fTest caseData |> ignore
+      
+  testList name (cases |> Seq.map dataToTest |> List.ofSeq)
+  
+let theoryWithResult (name:string) (cases: #seq<('T*'U)>) (fTest: 'T -> 'U) =
+  let dataToTest (caseData,expected) =
+    testCase (string (caseData, expected)) <| fun () ->
+      let actual = fTest caseData
+      Expect.equal actual expected $"Input: {caseData} \nExpected {expected} \nActual: {actual}"
+  
+  testList name (cases |> Seq.map dataToTest |> List.ofSeq)
+
+type ICrudAPI<'a> = {
+  Get: Guid -> 'a option
+  Save: Guid -> 'a -> unit
+  ListAll: unit -> 'a list
+  Generate: unit -> 'a
+}
+let reusableTestSuite (variantExplanation: string) (sutFactory: unit -> ICrudAPI<'a>) =
+  testList $"Can CRUD for: {variantExplanation}" [
+    testCase "Geting an unsaved item returns none" <| fun () ->
+      let sut = sutFactory ()
+      Expect.equal (sut.Get (Guid.NewGuid())) None ""
+
+    testCase "Get and save can roundtrip" <| fun () ->
+      let sut = sutFactory ()
+      let expected = sut.Generate ()
+      let id = Guid.NewGuid()
+      sut.Save id expected
+      Expect.equal (sut.Get id) (Some expected) ""
+
+    let setEqual actual expected message = 
+      let likeness (list: 'a list) = 
+        {| Length = list.Length; UniqueValues = set list|}
+      Expect.equal (likeness actual) (likeness expected) message
+
+    testCase "List should include all saved items" <| fun () ->
+      let sut = sutFactory ()
+      let expected = List.init 5 (fun _ -> sut.Generate ())
+      expected |> List.iter (fun x -> sut.Save (Guid.NewGuid()) x)
+    
+      setEqual (sut.ListAll ()) expected ""
+  ]
+
+
+let InMemoryCrudAPIFactory () =
+  let store = Collections.Generic.Dictionary<Guid, int> () 
+
+  {
+    Generate = (fun () -> Random.Shared.Next())
+    Get = (fun id -> if store.ContainsKey id then Some store[id] else None)
+    Save = (fun id value -> store[id] <- value)
+    ListAll = (fun () -> store.Values |> List.ofSeq)
+  }
+
+type RootClass() = class end
+type ClassA(i: int) = 
+  let i = i
+type ClassB() = inherit RootClass()
 
 [<Tests>]
 let tests =
-  testList "samples" [
-    testCase "universe exists (╭ರᴥ•́)" <| fun _ ->
+  testList "ExpectoTests" [
+
+    testCase "Try creating std out" <| fun () ->
+        use stdout = System.Console.OpenStandardOutput()
+        use swriter = new System.IO.StreamWriter(stdout)
+        swriter.WriteLine("hi")
+        stdout.Flush()
+        printfn "hi"
+    
+    testCase "Contains -- in the name, which we use an id separator" <| fun () ->
+        ()
+
+    testList "Represent all test functions, minus focus" [
+        testCase "testCase" <| fun () -> ()
+        testCaseAsync "testCaseAsync" <| async {
+        
+        }
+        testCaseTask "testCaseTask" <| fun () -> task { }
+        ptestCase "ptestCase" <| fun () -> ()
+        ptestCaseAsync "ptestCaseAsync" <| async { }
+        ptestCaseTask "ptestCaseTask" <| fun () -> task { }
+
+        test "test builder" {}
+        testAsync "test builder - async " {
+        
+        }
+        testTask "test builder - task" {
+        
+        }
+        ptest "ptest builder" {}
+        ptestAsync "ptest builder - async " {
+        
+        }
+        ptestTask "ptest builder - task" {
+        
+        }
+
+        testTheory "testTheory" [1;2;3] <| fun _ -> ()
+        testTheoryAsync "testTheoryAsync" [1;2;3] <| fun _ -> async {}
+        testTheoryTask "testTheoryTask" [1;2;3] <| fun _ -> task {}
+        ptestTheory "ptestTheory" [1;2;3] <| fun _ -> ()
+        ptestTheoryAsync "ptestTheoryAsync" [1;2;3] <| fun _ -> async {}
+        ptestTheoryTask "ptestTheoryTask" [1;2;3] <| fun _ -> task {}
+
+        testList "testFixture" [
+            let withFive testf () = testf 5
+            yield! testFixture withFive [
+                "fixture test 1", fun _ -> ()
+                "fixture test 2", fun _ -> ()
+            ]
+        ]
+
+        testList "testFixtureAsync" [
+            let withFiveAsync testf = async { do! testf 5 }
+            yield! testFixtureAsync withFiveAsync [
+                "fixture test 1", fun _ -> async {}
+                "fixture test 2", fun _ -> async {}
+            ]
+        ]
+
+        testList "testFixtureTask" [
+            let withFiveTask testf = task { do! testf 5 }
+            yield! testFixtureTask withFiveTask [
+                "fixture test 1", fun _ -> task {}
+                "fixture test 2", fun _ -> task {}
+            ]
+        ]
+        testList "testParam" (testParam 5 [
+            "with param 1", fun _ () -> ()
+            "with param 2", fun _ () -> ()
+        ] |> List.ofSeq)
+
+        testProperty "testProperty" <| fun (i: int) -> ()
+        testPropertyWithConfig FsCheckConfig.defaultConfig "testPropertyWithConfig" <| fun (i: int) -> ()
+        testPropertyWithConfigStdGen (0UL,0UL, None) FsCheckConfig.defaultConfig "testPropertyWithConfigStdGen" <| fun (i: int) -> ()
+        // etestProperty (0,0) "etestProperty" <| fun (i: int) -> ()
+        // etestPropertyWithConfig (0,0) FsCheckConfig.defaultConfig "etestPropertyWithConfig" <| fun (i: int) -> ()
+        ptestProperty "ptestProperty" <| fun (i: int) -> ()
+        ptestPropertyWithConfig FsCheckConfig.defaultConfig "ptestPropertyWithConfig" <| fun (i: int) -> ()
+    ]
+
+
+    testList "Wrapped test methods" [
+      testCase' "Methods that call other test methods still show in test explorer" <| fun _ ->
+        ()
+
+      test' "That includes test builder wrappers" {
+        ()
+      }
+
+      theoryWithResult "This repeats a test with different specified data" [
+        (1,2),3
+        (2,2),4
+        (1,2),4
+      ] <| fun (n,m) ->
+        n + m
+
+      testProperty' "A property tests with shared custom config" <| fun (i: int) ->
+        true
+
+    ]
+    
+    testTheory "New official theory test" [
+      (2,2),4
+      (2,3),5
+    ] <| fun ((x,y),sum) ->
+      Expect.equal (x+y) sum ""
+
+
+    reusableTestSuite "InMemoryCrudAPI" InMemoryCrudAPIFactory
+
+    testCase "Contains+separator.characters" <| fun _ ->
+      let subject = true
+      Expect.isTrue subject "I compute, therefore I am."
+
+    // testCase "Access to env" <| fun _ ->
+    //   let writeEnvVars (d:System.Collections.IDictionary) =
+    //     let formatted =
+    //       d.Keys 
+    //       |> Seq.cast<string>
+    //       |> Seq.map (fun key -> $"{key}: {d[key]}")
+    //     System.IO.File.AppendAllLines("C:/users/farle/downloads/env.txt", formatted)
+    //   let s = System.Environment.GetEnvironmentVariables()
+    //   writeEnvVars s
+    //   let envValue = System.Environment.GetEnvironmentVariable "this"
+    //   // let envValue = System.Environment.GetEnvironmentVariable "Ionide_TestValue"
+    //   Expect.equal envValue "cat" ""
+
+    testCase "universe exists (╭ರᴥ•́) boi" <| fun _ ->
+      let subject = true
+      Expect.isTrue subject "I compute, therefore I am."
+
+    testCase "contains \"quotes\"" <| fun _ ->
       let subject = true
       Expect.isTrue subject "I compute, therefore I am."
 
@@ -13,11 +213,11 @@ let tests =
       let subject = false
       Expect.isTrue subject "I should fail because the subject is false"
 
-    testCase "I'm skipped (should skip)" <| fun _ ->
-      Tests.skiptest "Yup, waiting for a sunny day..."
-
     testCase "I'm always fail (should fail)" <| fun _ ->
       Tests.failtest "This was expected..."
+
+    testCase "I'm skipped (should skip)" <| fun _ ->
+      Tests.skiptest "Yup, waiting for a sunny day..."
 
     testCase "contains things" <| fun _ ->
       Expect.containsAll [| 2; 3; 4 |] [| 2; 4 |]
@@ -30,7 +230,43 @@ let tests =
     testCase "Sometimes I want to ༼ノಠل͟ಠ༽ノ ︵ ┻━┻" <| fun _ ->
       Expect.equal "abcdëf" "abcdef" "These should equal"
 
+    
     test "I am (should fail)" {
       "╰〳 ಠ 益 ಠೃ 〵╯" |> Expect.equal true false
     }
+
+    testList "Deeply nest" [
+      testList "Another layer" [
+        testCase "Bottom of nesting" (fun _ -> ())
+      ]
+    ]
   ]
+
+let compose1 = testList "Not directly in parent"  [
+  testCase "I pass and can rename" (fun _ -> ())
+  test "Me too" { ()}
+]
+
+let compose2 = testList "Also not directly in parent"  [
+  testCase "Nya aa" (fun _ -> ())
+  test "Woof" { ()}
+  testList "Deeper nesting boi" [
+    testCase "Baaa" (fun _ -> ())
+
+    testList "So deep" [
+      testCase "Baaaaaaaaaa" (fun _ -> ())
+    ]
+  ]
+]
+
+[<Tests>]
+let t = testList "Composed test list?" [
+  compose1
+  compose2
+]
+
+[<Tests>]
+let t2 = testList "Composed test lists - 2" [
+  compose1
+  compose2
+]
