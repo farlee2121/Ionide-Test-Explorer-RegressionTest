@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="MTPv2.Expecto.Tests/MTPv2.Expecto.Tests.fsproj" />
   <Project Path="MTPv2.MsTest.Tests/MTPv2.MsTest.Tests.fsproj" />
   <Project Path="MTPv2.NUnit.Tests/MTPv2.NUnit.Tests.fsproj" />
   <Project Path="MTPv2.TUnit.Tests/MTPv2.TUnit.Tests.fsproj" />
