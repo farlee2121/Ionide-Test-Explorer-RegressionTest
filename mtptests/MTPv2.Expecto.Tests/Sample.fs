@@ -188,6 +188,12 @@ let tests =
       let subject = true
       Expect.isTrue subject "I compute, therefore I am."
 
+    testList "list . with + separators" [
+      testCase "Contains+separator.characters" <| fun _ ->
+        let subject = true
+        Expect.isTrue subject "I compute, therefore I am."
+    ]
+
     // testCase "Access to env" <| fun _ ->
     //   let writeEnvVars (d:System.Collections.IDictionary) =
     //     let formatted =
